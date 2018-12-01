@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+	{% if notfound %}
+
+	<h2>{{ notfound }}</h2>
+
+
+	{% else %}
+
+		{% if crypto.Response %}
+			<h3>Sorry {{ quote }} symbol doesn't exist. Try again.</h3>
+
+		{% endif%}
+
+		{% for key,value in crypto.DISPLAY.items %}
+
+			<div class="lookup-bg">
+				<h2>{{ key }}</h2>	
+		      	<p><strong>Name:</strong> - {{ key }}</p><br/> 
+		      	<p><strong>Price:</strong> - {{ value.USD.PRICE }}</p><br/>
+		      	<p><strong>High Price:</strong> - {{ value.USD.HIGHDAY }}</p><br/>
+		      	<p><strong>LOW PRICE</strong> - {{ value.USD.LOWDAY }}</p><br/>
+		      	<p><strong>MARKET CAP</strong> - {{ value.USD.MKTCAP }}</p><br/>
+		     </div>
+		     <br>
+
+		{% endfor %}
+
+	{% endif %}
+
+{% endblock%}
